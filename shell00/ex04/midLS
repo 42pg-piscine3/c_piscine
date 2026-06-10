@@ -1,0 +1,10 @@
+#/bin/bash
+
+# 1. lists all files and directories in your current directory 
+#     a.(excluding hidden files or any file starting with a dot, including 
+# double dots)
+
+# 2. sorted by modification date
+# 3. with entries separated by a comma and a space.
+# 4. Directory names should end with a slash (/).
+ls -tmp
