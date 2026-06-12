@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Use Bash brace expansion to loop backwards from z to a
+for char in {z..a}
+do
+    # -n keeps the printout on the same line with a space separator
+    echo -n "$char "
+done
+
+# Print a final newline character to clean up the terminal output
+echo ""
