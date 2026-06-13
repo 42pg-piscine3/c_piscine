@@ -6,13 +6,12 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 17:01:20 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/13 17:03:20 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/13 17:34:22 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
-void ft_putchar(char draw)
+void	ft_putchar(char draw)
 {
 	write(1, &draw, 1);
 }
-

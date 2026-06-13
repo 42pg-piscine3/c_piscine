@@ -6,20 +6,20 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:08:08 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/13 17:13:05 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/13 17:49:59 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-void ft_putchar(char draw);
+void	ft_putchar(char draw);
 
 // x = column, y = row
 void	rush(int x, int y)
 {
-	int row;
-	int col;
-	int col_count;
-	int row_count;
+	int	row;
+	int	col;
+	int	col_count;
+	int	row_count;
 	
 	row = y;
 	col = x;
@@ -39,7 +39,7 @@ void	rush(int x, int y)
 
 			if (row_count == 1)
 			{
-				if(col_count == 1 ) //Start with 1 for natural language
+				if (col_count == 1) //Start with 1 for natural language
 				{
 					ft_putchar('o');
 				}
@@ -54,7 +54,7 @@ void	rush(int x, int y)
 			} 
 			else if (row_count < row)
 			{
-				if(col_count == 1 ) //Start with 1 for natural language
+				if (col_count == 1) //Start with 1 for natural language
 				{
 					ft_putchar('|');
 				}
@@ -69,7 +69,7 @@ void	rush(int x, int y)
 			}
 			else //end of row
 			{
-				if(col_count == 1 ) //Start with 1 for natural language
+				if (col_count == 1) //Start with 1 for natural language
 				{
 					ft_putchar('o');
 				}
