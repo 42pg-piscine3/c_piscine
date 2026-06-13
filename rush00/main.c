@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:06:21 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/13 16:23:21 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/13 17:10:51 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@ void	rush (int x, int y);
 
 int		main ()
 {
-	rush (5,5);
+	//rush ( column, row)
+	rush (5,3);
 	return (0);
 }

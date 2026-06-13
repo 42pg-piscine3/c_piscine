@@ -6,29 +6,33 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:08:08 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/13 17:02:50 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/13 17:13:05 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
 void ft_putchar(char draw);
 
+// x = column, y = row
 void	rush(int x, int y)
 {
-	int row, col;
+	int row;
+	int col;
+	int col_count;
+	int row_count;
 	
-	row = x;
-	col = y;
+	row = y;
+	col = x;
+	row_count = 1; //Start row_count with 1 for natural language
 
-	int col_count = 1 ;
-	int row_count ;
-
-	//column loop
+	// | row loop 
+	// V
 	while (row_count <= row)
 	{	
 		//printf("row_count = %d\n", row_count);
 		col_count = 1; //Reset column count when starting a new row
-
+		
+		//column loop -->>
 		while (col_count <= col)
 		{
 			//printf("col_count = %d\n", col_count);
