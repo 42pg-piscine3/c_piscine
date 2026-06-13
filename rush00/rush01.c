@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:08:08 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/14 05:44:29 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/14 06:17:01 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -21,12 +21,10 @@ void	ft_putchar(char draw);
  *	1. increment the col_count (from 1 to the "col")
  *	2. decide what to draw depending on col_count.
  *
- *		1 <columns between 1 and the last> <last>
- *
- *		| ||||||||||||||||||||||||||||||| |
- *		v vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv v
- *
- *		/ ******************************* \\ 
+ *		/ * * * \  <-- Draws this pattern for first row
+ *		*       *
+ *		*       *
+ *		\ * * * /
  *
  *	At the end of the column, place a newline (\n) character.
  */
@@ -62,13 +60,10 @@ void	drawrow_first(int col)
  *	1. increment the col_count (from 1 to the "col")
  *	2. decide what to draw depending on col_count.
  *
- *		1 <columns between 1 and the last> <last>
- *
- *		| ||||||||||||||||||||||||||||||| |
- *		v vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv v
- *
- *		|                                 |
- *		|                                 |
+ *		/ * * * \     Draws:
+ *		*       * <-- Patterns for rows in between top and last.
+ *		*       * <-- Patterns for rows in between top and last.
+ *		\ * * * /
  *
  *	At the end of the column, place a newline (\n) character.
  */
@@ -104,12 +99,10 @@ void	drawrow_middles(int col)
  *	1. increment the col_count (from 1 to the "col")
  *	2. decide what to draw depending on col_count.
  *
- *		1 <columns between 1 and the last> <last>
- *
- *		| ||||||||||||||||||||||||||||||| |
- *		v vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv v
- *
- *		\ ******************************* /
+ *		/ * * * \
+ *		*       *
+ *		*       *
+ *		\ * * * / <-- Draws patterns for last rows.
  *
  *	At the end of the column, place a newline (\n) character.
  */
@@ -162,7 +155,7 @@ void	rush(int x, int y)
 
 	row = y;
 	col = x;
-	row_count = 1; //Start row_count with 1 for natural language
+	row_count = 1;
 	while (row_count <= row)
 	{
 		if (row_count == 1)
