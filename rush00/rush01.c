@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:08:08 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/14 03:47:08 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/14 03:54:56 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -21,15 +21,15 @@ void	draw_firstrow (int col)
 	{
 		if (col_count == 1) //Start with 1 for natural language
 		{
-			ft_putchar('o');
+			ft_putchar('/');
 		}
 		else if (col_count < col) //other columns than start or end
 		{
-			ft_putchar('-');
+			ft_putchar('*');
 		}
 		else // end of column
 		{
-			ft_putchar('o');
+			ft_putchar('\\');
 		}
 		col_count++;
 	}
@@ -45,7 +45,7 @@ void	draw_middlerows (int col)
 	{
 		if (col_count == 1) //Start with 1 for natural language
 		{
-			ft_putchar('|');
+			ft_putchar('*');
 		}
 		else if (col_count < col) //other columns than start or end
 		{
@@ -53,7 +53,7 @@ void	draw_middlerows (int col)
 		}
 		else // end of column
 		{
-			ft_putchar('|');
+			ft_putchar('*');
 		}
 		col_count++;
 	}
@@ -71,15 +71,15 @@ void	draw_lastrow (int col)
 	{
 		if (col_count == 1) //Start with 1 for natural language
 		{
-			ft_putchar('o');
+			ft_putchar('\\');
 		}
 		else if (col_count < col) //other columns than start or end
 		{
-			ft_putchar('-');
+			ft_putchar('*');
 		}
 		else // end of column
 		{
-			ft_putchar('o');
+			ft_putchar('/');
 		}
 		col_count++;
 	}
