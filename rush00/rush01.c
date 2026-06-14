@@ -6,12 +6,14 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:08:08 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/14 21:34:00 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/14 23:20:22 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-char	g_patterns[][8] = {
+extern int	g_option_rush;
+
+static char	g_patterns[5][8] = {
 {'o', '-', 'o', '|', '|', 'o', '-', 'o'},
 {'/', '*', '\\', '*', '*', '\\', '*', '/'},
 {'A', 'B', 'A', 'B', 'B', 'C', 'B', 'C'},
@@ -45,15 +47,15 @@ void	drawrow_first(int col)
 	{
 		if (col_count == 1)
 		{
-			ft_putchar('/');
+			ft_putchar(g_patterns[g_option_rush][0]);
 		}
 		else if (col_count < col)
 		{
-			ft_putchar('*');
+			ft_putchar(g_patterns[g_option_rush][1]);
 		}
 		else
 		{
-			ft_putchar('\\');
+			ft_putchar(g_patterns[g_option_rush][2]);
 		}
 		col_count++;
 	}
@@ -84,7 +86,7 @@ void	drawrow_middles(int col)
 	{
 		if (col_count == 1)
 		{
-			ft_putchar('*');
+			ft_putchar(g_patterns[g_option_rush][3]);
 		}
 		else if (col_count < col)
 		{
@@ -92,7 +94,7 @@ void	drawrow_middles(int col)
 		}
 		else
 		{
-			ft_putchar('*');
+			ft_putchar(g_patterns[g_option_rush][4]);
 		}
 		col_count++;
 	}
@@ -123,15 +125,15 @@ void	drawrow_last(int col)
 	{
 		if (col_count == 1)
 		{
-			ft_putchar('\\');
+			ft_putchar(g_patterns[g_option_rush][5]);
 		}
 		else if (col_count < col)
 		{
-			ft_putchar('*');
+			ft_putchar(g_patterns[g_option_rush][6]);
 		}
 		else
 		{
-			ft_putchar('/');
+			ft_putchar(g_patterns[g_option_rush][7]);
 		}
 		col_count++;
 	}
