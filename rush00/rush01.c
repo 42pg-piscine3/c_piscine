@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:08:08 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/14 07:01:35 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/14 15:54:45 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -35,21 +35,21 @@ void	drawrow_first(int col)
 	col_count = 1;
 	while (col_count <= col)
 	{
-		if (col_count == 1) //Start with 1 for natural language
+		if (col_count == 1)
 		{
 			ft_putchar('/');
 		}
-		else if (col_count < col) //other columns than start or end
+		else if (col_count < col)
 		{
 			ft_putchar('*');
 		}
-		else // end of column
+		else
 		{
 			ft_putchar('\\');
 		}
 		col_count++;
 	}
-	ft_putchar('\n'); //put newline at the end column
+	ft_putchar('\n');
 }
 
 /*
@@ -74,21 +74,21 @@ void	drawrow_middles(int col)
 	col_count = 1;
 	while (col_count <= col)
 	{
-		if (col_count == 1) //Start with 1 for natural language
+		if (col_count == 1)
 		{
 			ft_putchar('*');
 		}
-		else if (col_count < col) //other columns than start or end
+		else if (col_count < col)
 		{
 			ft_putchar(' ');
 		}
-		else // end of column
+		else
 		{
 			ft_putchar('*');
 		}
 		col_count++;
 	}
-	ft_putchar('\n'); //put newline at the end column
+	ft_putchar('\n');
 }
 
 /*
@@ -149,27 +149,28 @@ void	drawrow_last(int col)
 //			x = column, y = row
 void	rush(int x, int y)
 {
-	int	row;
-	int	col;
 	int	row_count;
 
-	row = y;
-	col = x;
 	row_count = 1;
 	printf("rush(%d, %d):\n", x, y);
-	while (row_count <= row)
+	if ((0 > x) || (0 > y))
+	{
+		x = 0;
+		y = 0;
+	}
+	while (row_count <= y)
 	{
 		if (row_count == 1)
 		{
-			drawrow_first(col);
+			drawrow_first(x);
 		}
-		else if (row_count < row)
+		else if (row_count < y)
 		{
-			drawrow_middles(col);
+			drawrow_middles(x);
 		}
 		else
 		{
-			drawrow_last(col);
+			drawrow_last(x);
 		}
 		row_count = row_count + 1;
 	}
