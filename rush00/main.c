@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:06:21 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/14 23:09:45 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/16 13:26:25 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -35,10 +35,9 @@ int	main(int argc, char *argv[])
 	}
 	if (argc > 1)
 	{
-		printf("Option passed in: %c\n", argv[1][0]);
+		printf("Option passed in: %c\n", argv[1][0]); //TODO: remove
 		g_option_rush = argv[1][0] - '0';
 	}
-	printf("Option converted: %d\n", g_option_rush);
 	if (g_option_rush < 0 || 4 < g_option_rush)
 	{
 		return (-1);

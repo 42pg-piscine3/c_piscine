@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:08:08 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/14 23:20:22 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/16 13:26:11 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -162,7 +162,7 @@ void	rush(int x, int y)
 	int	row_count;
 
 	row_count = 1;
-	printf("rush(%d, %d):\n", x, y);
+	printf("\nrush(%d, %d):\n", x, y);//TODO: remove
 	if ((0 > x) || (0 > y))
 	{
 		x = 0;
