@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:39:57 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 04:58:28 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/18 05:17:29 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -55,7 +55,7 @@ void	ft_print_digits2(int left, int right)
 		num_to_char(0);
 	}
 	num_to_char(right);
-	if (left < 99)
+	if (left < 98)
 		write(1, ", ", 2);
 }
 
