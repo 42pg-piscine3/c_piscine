@@ -6,9 +6,10 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 13:40:22 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/17 10:06:44 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/17 23:42:54 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#define TEST 0 //define 1 to test
 
 #include <unistd.h>
 
@@ -20,30 +21,73 @@ void	ft_is_negative(int n)
 		write(1, "P", 1);
 }
 
-/*
- * Uncomment to test
- *
-void	num_to_char (int num)
+#if TEST == 1
+
+void	ft_putchar(char c)
 {
+	write(1, &c, 1);
+}
+
+/*
+ *
+ * Note: Handling of negatives before attempting to deconstruct num
+ *		if it was after conditions (num >= 10), additional recursive call
+ *		has to be made:
+ *
+ 	if (num >= 10)
+	{
+		num_to_char(num / 10);
+		num_to_char(num % 10);
+	}
+	else if(num < 0)
+	{
+		ft_putchar('-');
+		num = -num;
+		num_to_char(num); //extra line to call recursion
+	}
+	else
+	{
+		charnum = '0' + num;
+		write (1, &charnum, 1);
+	}
+
+ *	Handling negatives first, allows the rest of the logic to deconstruct the 
+ *	number without extra line to call.
+ *	Printing '-' first, then only deconstruct it.
+ */
+void	num_to_char(int num)
+{
+	char	charnum;
+
+	if (num < 0)
+	{
+		ft_putchar('-');
+		num = -num;
+	}
 	if (num >= 10)
 	{
 		num_to_char(num / 10);
-		num_to_char
-
+		num_to_char(num % 10);
 	}
-	num_to_char('0' + (num % 10));
+	else
+	{
+		charnum = '0' + num;
+		write (1, &charnum, 1);
+	}
 }
 
 int	main(void)
 {
-	int test = -2;
+	int	test;
 
+	test = -2;
 	while (test < 9)
 	{
-		write(1, test, 1);
+		num_to_char(test);
 		ft_is_negative(test);
 		write(1, "\n", 1);
 		test++;
 	}
 }
-*/
+
+#endif //end TEST
