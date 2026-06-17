@@ -6,11 +6,12 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:39:57 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 03:23:17 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/18 03:43:04 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 #include <stdio.h>
+
 void	ft_print_comb(void);
 
 void	ft_putchar(char c)
@@ -20,18 +21,18 @@ void	ft_putchar(char c)
 
 void	num_to_char(int num)
 {
-	char charint;
+	char	charint;
 
 	if (num < 0)
 	{
 		ft_putchar('-');
 		num = -num;
 	}
-	if (num >=10 )
+	if (num >= 10)
 	{
-		printf("1st group recursion call: %d\n",num);
+		printf("1st group recursion call: %d\n", num);
 		num_to_char(num / 10);
-		printf("2nd group recursion call: %d\n",num);
+		printf("2nd group recursion call: %d\n", num);
 		num_to_char(num % 10);
 	}
 	else
@@ -41,23 +42,31 @@ void	num_to_char(int num)
 	}
 }
 
-
-
 void	ft_print_comb(void)
 {
-	int digit;
+	int	digit1;
+	int	digit2;
+	int	digit3;
 
-	digit = 0;
-	//num_to_char(123);
-
-	while (digit < 7)
+	digit1 = 0;
+	digit2 = digit1 + 1;
+	digit3 = digit2 + 1;
+	while (digit1 < 8)
 	{
-		num_to_char(digit);
-		digit++;
+		num_to_char(digit1);
+		while (digit2 < 9)
+		{
+			if(digit2 > (digit1))
+			{
+				num_to_char(digit2);
+			}
+			digit2++;
+		}
+		digit1++;
 	}
 }
 
-int main (void)
+int	main(void)
 {
 	ft_print_comb();
 }

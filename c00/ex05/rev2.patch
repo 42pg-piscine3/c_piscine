@@ -1,0 +1,59 @@
+9c9
+< /*   Updated: 2026/06/18 03:23:17 by joshtan          ###   ########.fr       */
+---
+> /*   Updated: 2026/06/18 03:43:04 by joshtan          ###   ########.fr       */
+13a14
+> 
+23c24
+< 	char charint;
+---
+> 	char	charint;
+30c31
+< 	if (num >=10 )
+---
+> 	if (num >= 10)
+32c33
+< 		printf("1st group recursion call: %d\n",num);
+---
+> 		printf("1st group recursion call: %d\n", num);
+34c35
+< 		printf("2nd group recursion call: %d\n",num);
+---
+> 		printf("2nd group recursion call: %d\n", num);
+44,45d44
+< 
+< 
+48,53c47,54
+< 	int digit;
+< 
+< 	digit = 0;
+< 	//num_to_char(123);
+< 
+< 	while (digit < 7)
+---
+> 	int	digit1;
+> 	int	digit2;
+> 	int	digit3;
+> 
+> 	digit1 = 0;
+> 	digit2 = digit1 + 1;
+> 	digit3 = digit2 + 1;
+> 	while (digit1 < 8)
+55,56c56,65
+< 		num_to_char(digit);
+< 		digit++;
+---
+> 		num_to_char(digit1);
+> 		while (digit2 < 9)
+> 		{
+> 			if(digit2 > (digit1))
+> 			{
+> 				num_to_char(digit2);
+> 			}
+> 			digit2++;
+> 		}
+> 		digit1++;
+60c69
+< int main (void)
+---
+> int	main(void)
