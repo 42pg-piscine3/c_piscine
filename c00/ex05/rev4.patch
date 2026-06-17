@@ -1,0 +1,24 @@
+9c9
+< /*   Updated: 2026/06/18 04:02:02 by joshtan          ###   ########.fr       */
+---
+> /*   Updated: 2026/06/18 04:30:02 by joshtan          ###   ########.fr       */
+44a45,53
+> void	ft_print_digits(int left, int center, int right)
+> {
+> 	num_to_char(left);
+> 	num_to_char(center);
+> 	num_to_char(right);
+> 	if (left < 7)
+> 		write(1, ", ", 2);
+> }
+> 
+62,68c71
+< 					num_to_char(digit1);
+< 					num_to_char(digit2);
+< 				}
+< 				if (digit3 > digit2)
+< 				{
+< 					num_to_char(digit3);
+< 					write(1, ", ", 2);
+---
+> 					ft_print_digits(digit1, digit2, digit3);

@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:39:57 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 04:02:02 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/18 04:30:02 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -42,6 +42,15 @@ void	num_to_char(int num)
 	}
 }
 
+void	ft_print_digits(int left, int center, int right)
+{
+	num_to_char(left);
+	num_to_char(center);
+	num_to_char(right);
+	if (left < 7)
+		write(1, ", ", 2);
+}
+
 void	ft_print_comb(void)
 {
 	int	digit1;
@@ -59,13 +68,7 @@ void	ft_print_comb(void)
 			{
 				if (digit2 > digit1)
 				{
-					num_to_char(digit1);
-					num_to_char(digit2);
-				}
-				if (digit3 > digit2)
-				{
-					num_to_char(digit3);
-					write(1, ", ", 2);
+					ft_print_digits(digit1, digit2, digit3);
 				}
 				digit3++;
 			}
