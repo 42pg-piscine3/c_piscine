@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:39:57 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 03:43:04 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/18 04:02:02 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -49,16 +49,25 @@ void	ft_print_comb(void)
 	int	digit3;
 
 	digit1 = 0;
-	digit2 = digit1 + 1;
-	digit3 = digit2 + 1;
 	while (digit1 < 8)
 	{
-		num_to_char(digit1);
+		digit2 = digit1 + 1;
 		while (digit2 < 9)
 		{
-			if(digit2 > (digit1))
+			digit3 = digit2 + 1;
+			while (digit3 < 10)
 			{
-				num_to_char(digit2);
+				if (digit2 > digit1)
+				{
+					num_to_char(digit1);
+					num_to_char(digit2);
+				}
+				if (digit3 > digit2)
+				{
+					num_to_char(digit3);
+					write(1, ", ", 2);
+				}
+				digit3++;
 			}
 			digit2++;
 		}
