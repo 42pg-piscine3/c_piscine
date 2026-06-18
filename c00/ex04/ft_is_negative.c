@@ -6,10 +6,10 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 13:40:22 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/17 23:42:54 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/18 10:35:00 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#define TEST 0 //define 1 to test
+#define TEST 1//define 1 to test
 
 #include <unistd.h>
 
@@ -48,7 +48,7 @@ void	ft_putchar(char c)
 	else
 	{
 		charnum = '0' + num;
-		write (1, &charnum, 1);
+		ft_putchar(charnum);
 	}
 
  *	Handling negatives first, allows the rest of the logic to deconstruct the 
@@ -72,7 +72,7 @@ void	num_to_char(int num)
 	else
 	{
 		charnum = '0' + num;
-		write (1, &charnum, 1);
+		ft_putchar(charnum);
 	}
 }
 
