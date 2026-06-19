@@ -6,11 +6,10 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:39:57 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/19 10:03:59 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/19 10:40:55 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <stdio.h>
 
 void	ft_print_comb(void);
 
@@ -76,7 +75,9 @@ void	ft_print_comb(void)
 	}
 }
 
+/*
 int	main(void)
 {
 	ft_print_comb();
 }
+*/
