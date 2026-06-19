@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 05:19:25 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/19 10:06:09 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/19 10:30:35 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -29,26 +29,31 @@ void	ft_putnbr(int nb)
 		ft_putchar('-');
 		nb = -nb;
 	}
-	else if (nb >= 10)
+	if (nb >= 10)
 	{
 		ft_putnbr(nb / 10);
-		ft_putchar(nb % 10);
 	}
-	else {
-		charint = '0' + nb;
-		ft_putchar(charint);
-	}
+	nb = nb % 10;
+	charint = '0' + nb;
+	ft_putchar(charint);
 }
 
 #if TEST == 1
-
+/*
+ * Does not handle negative symbol properly. 45-48= -3
+ * So you will see "-3""XXXX"
+ * e.g. ./a.out -42	-> "-342"
+ */
 int	main(int argc, char *argv[])
 {
 	int	num;
 
 	if (argc < 2)
 	{
-		ft_putnbr(-421);
+		ft_putnbr(42);
+		ft_putchar('\n');
+		ft_putnbr(421);
+		ft_putchar('\n');
 	}
 	else
 	{
@@ -58,6 +63,7 @@ int	main(int argc, char *argv[])
 			ft_putnbr(num);
 			argv[1] = argv[1] + 1;
 		}
+		ft_putchar('\n');
 	}
 }
 #endif // End Test
