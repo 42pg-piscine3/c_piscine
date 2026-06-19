@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:39:57 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 05:17:29 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/19 10:51:56 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -27,7 +27,7 @@ void	num_to_char(int num)
 		ft_putchar('-');
 		num = -num;
 	}
-	if (num >= 10)
+	else if (num >= 10)
 	{
 		num_to_char(num / 10);
 		num_to_char(num % 10);
@@ -80,7 +80,9 @@ void	ft_print_comb2(void)
 	}
 }
 
+/*
 int	main(void)
 {
 	ft_print_comb2();
 }
+*/

@@ -6,10 +6,10 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 13:40:22 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 10:35:00 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/19 10:50:04 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#define TEST 1//define 1 to test
+#define TEST 0//define 1 to test
 
 #include <unistd.h>
 
@@ -64,7 +64,7 @@ void	num_to_char(int num)
 		ft_putchar('-');
 		num = -num;
 	}
-	if (num >= 10)
+	else if (num >= 10)
 	{
 		num_to_char(num / 10);
 		num_to_char(num % 10);
