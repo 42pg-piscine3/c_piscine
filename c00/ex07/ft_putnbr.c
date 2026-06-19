@@ -6,12 +6,12 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 05:19:25 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 05:56:55 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/19 10:06:09 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
-#define TEST 0//Set to 1 for testing with main
+#define TEST 1//Set to 1 for testing with main
 
 void	ft_putnbr(int nb);
 
@@ -29,13 +29,12 @@ void	ft_putnbr(int nb)
 		ft_putchar('-');
 		nb = -nb;
 	}
-	if (nb >= 10)
+	else if (nb >= 10)
 	{
 		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putchar(nb % 10);
 	}
-	else
-	{
+	else {
 		charint = '0' + nb;
 		ft_putchar(charint);
 	}
@@ -49,7 +48,7 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
-		ft_putnbr(42);
+		ft_putnbr(-421);
 	}
 	else
 	{
