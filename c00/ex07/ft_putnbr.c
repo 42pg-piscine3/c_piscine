@@ -6,12 +6,12 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 05:19:25 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/19 10:30:35 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/19 10:32:17 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
-#define TEST 1//Set to 1 for testing with main
+#define TEST 0//Set to 1 for testing with main
 
 void	ft_putnbr(int nb);
 
