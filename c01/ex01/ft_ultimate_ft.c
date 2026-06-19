@@ -6,17 +6,11 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:15:38 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 13:06:35 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/19 10:59:29 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define TEST 0//Define 1 to test with main()
-
-#if TEST == 1
-
-# include <stdio.h>
-
-#endif
 
 void	ft_ultimate_ft(int *********nbr)
 {
@@ -61,10 +55,8 @@ int	main(int argc, char *argv[])
 			test_nbr = test_nbr + (*argv[1] - '0');
 			argv[1]++;
 		}
-		printf("Received: %d\n", test_nbr);
 		ft_ultimate_ft(&p8test_nbr);
 	}
-	printf("post ft_ultimate_ft(): %d\n", test_nbr);
 	return (0);
 }
 */
