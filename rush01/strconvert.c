@@ -6,11 +6,11 @@
 /*   By: nisim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 19:55:36 by nisim             #+#    #+#             */
-/*   Updated: 2026/06/20 19:56:03 by nisim            ###   ########.fr       */
+/*   Updated: 2026/06/21 13:24:09 by nisim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strconvert(char *str, int *clues)
+int	ft_strconvert(char *str, int *view)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_strconvert(char *str, int *clues)
 			if (str[i] < '1' || str[i] > '4')
 				return (0);
 			else
-				clues[i / 2] = str[i] - '0';
+				view[i / 2] = str[i] - '0';
 		}
 		else
 		{
