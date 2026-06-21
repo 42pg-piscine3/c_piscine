@@ -1,74 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush01_3.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joshtan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/21 12:51:01 by joshtan           #+#    #+#             */
+/*   Updated: 2026/06/21 12:57:45 by joshtan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
-** rush01.c
-**
-** ALGORITHM: Pattern-lookup with priority ordering.
-**
-** TERMINOLOGY:
-**   Clue values are parsed from argv[1] (subject order: col1top..col4top,
-**   col1bottom..col4bottom, row1left..row4left, row1right..row4right) and
-**   stored as paired arrays for direct lookup:
-**     viewLR[4][2] : viewLR[r][0] = row(r+1)left,  viewLR[r][1] = row(r+1)right
-**     viewTB[4][2] : viewTB[c][0] = col(c+1)top,   viewTB[c][1] = col(c+1)bottom
-**
-** PAIRS (used directly via viewLR/viewTB, no flat-array offsets needed):
-**   row views for row r : viewLR[r][0] (left)  viewLR[r][1] (right)
-**   col views for col c : viewTB[c][0] (top)   viewTB[c][1] (bottom)
-**
-** PATTERN TABLE LAYOUT (g_patterns[24][6]):
-**   col 0   = left  (row_left  OR col_top)
-**   col 1   = right (row_right OR col_bottom)
-**   col 2-5 = the four cell values in order
-**
-**   Priority 1 (1 pattern each):  [4,1]  [1,4]
-**   Priority 2 (2 patterns each): [2,1]  [1,2]
-**   Priority 3 (3 patterns each): [1,3]  [3,1]
-**   Priority 4 (3 patterns each): [2,3]  [3,2]
-**   Priority 5 (6 patterns):      [2,2]  (two sub-cases)
-**     sub-case  [2,2]  : 4 is at index 2 (0-indexed from col 2)
-**     sub-case  [2,2]' : 4 is at index 1 (0-indexed from col 2)
-*/
+ ** rush01.c
+ **
+ ** ALGORITHM: Pattern-lookup with priority ordering.
+ **
+ ** TERMINOLOGY:
+ ** View values are parsed from argv[1] (subject order: col1top..col4top,
+ ** col1bottom..col4bottom, row1left..row4left, row1right..row4right) and
+ ** stored as paired arrays for direct lookup:
+ ** view_lr[4][2] : view_lr[r][0] = row(r+1)left, view_lr[r][1] = row(r+1)right
+ ** view_tb[4][2] : view_tb[c][0] = col(c+1)top, view_tb[c][1] = col(c+1)bottom
+ **
+ ** PAIRS (used directly via view_lr/view_tb, no flat-array offsets needed):
+ **   row views for row r : view_lr[r][0] (left)  view_lr[r][1] (right)
+ **   col views for col c : view_tb[c][0] (top)   view_tb[c][1] (bottom)
+ **
+ ** PATTERN TABLE LAYOUT (g_patterns[24][6]):
+ **   col 0   = left  (row_left  OR col_top)
+ **   col 1   = right (row_right OR col_bottom)
+ **   col 2-5 = the four cell values in order
+ **
+ **   Priority 1 (1 pattern each):  [4,1]  [1,4]
+ **   Priority 2 (2 patterns each): [2,1]  [1,2]
+ **   Priority 3 (3 patterns each): [1,3]  [3,1]
+ **   Priority 4 (3 patterns each): [2,3]  [3,2]
+ **   Priority 5 (6 patterns):      [2,2]  (two sub-cases)
+ **     sub-case  [2,2]  : 4 is at index 2 (0-indexed from col 2)
+ **     sub-case  [2,2]' : 4 is at index 1 (0-indexed from col 2)
+ */
 
 #include <unistd.h>
 
 #define PATTERN_COUNT 24
 
 /*
-** g_patterns[i][0]   = left  (row_left or col_top)
-** g_patterns[i][1]   = right (row_right or col_bottom)
-** g_patterns[i][2-5] = four cell values in order
-** Ordered by priority: fewest options first (most constrained pairs first).
-*/
+ ** g_patterns[i][0]   = left  (row_left or col_top)
+ ** g_patterns[i][1]   = right (row_right or col_bottom)
+ ** g_patterns[i][2-5] = four cell values in order
+ ** Ordered by priority: fewest options first (most constrained pairs first).
+ */
 static const int	g_patterns[PATTERN_COUNT][6] = {
-	{4, 1, 1, 2, 3, 4},
-	{1, 4, 4, 3, 2, 1},
-	{2, 1, 3, 1, 2, 4},
-	{2, 1, 3, 2, 1, 4},
-	{1, 2, 4, 2, 1, 3},
-	{1, 2, 4, 1, 2, 3},
-	{1, 3, 4, 2, 3, 1},
-	{1, 3, 4, 3, 1, 2},
-	{1, 3, 4, 1, 3, 2},
-	{3, 1, 1, 3, 2, 4},
-	{3, 1, 2, 1, 3, 4},
-	{3, 1, 2, 3, 1, 4},
-	{2, 3, 1, 4, 3, 2},
-	{2, 3, 2, 4, 3, 1},
-	{2, 3, 3, 4, 2, 1},
-	{3, 2, 2, 3, 4, 1},
-	{3, 2, 1, 3, 4, 2},
-	{3, 2, 1, 2, 4, 3},
-	{2, 2, 2, 1, 4, 3},
-	{2, 2, 3, 1, 4, 2},
-	{2, 2, 3, 2, 4, 1},
-	{2, 2, 3, 4, 1, 2},
-	{2, 2, 2, 4, 1, 3},
-	{2, 2, 1, 4, 2, 3},
+{4, 1, 1, 2, 3, 4},
+{1, 4, 4, 3, 2, 1},
+{2, 1, 3, 1, 2, 4},
+{2, 1, 3, 2, 1, 4},
+{1, 2, 4, 2, 1, 3},
+{1, 2, 4, 1, 2, 3},
+{1, 3, 4, 2, 3, 1},
+{1, 3, 4, 3, 1, 2},
+{1, 3, 4, 1, 3, 2},
+{3, 1, 1, 3, 2, 4},
+{3, 1, 2, 1, 3, 4},
+{3, 1, 2, 3, 1, 4},
+{2, 3, 1, 4, 3, 2},
+{2, 3, 2, 4, 3, 1},
+{2, 3, 3, 4, 2, 1},
+{3, 2, 2, 3, 4, 1},
+{3, 2, 1, 3, 4, 2},
+{3, 2, 1, 2, 4, 3},
+{2, 2, 2, 1, 4, 3},
+{2, 2, 3, 1, 4, 2},
+{2, 2, 3, 2, 4, 1},
+{2, 2, 3, 4, 1, 2},
+{2, 2, 2, 4, 1, 3},
+{2, 2, 1, 4, 2, 3},
 };
 
 /*
-** Count buildings visible scanning arr[4] left-to-right.
-** Each building taller than all previous ones adds +1 to visible count.
-*/
+ ** Count buildings visible scanning arr[4] left-to-right.
+ ** Each building taller than all previous ones adds +1 to visible count.
+ */
 static int	count_visible(int arr[4])
 {
 	int	max;
@@ -91,11 +103,11 @@ static int	count_visible(int arr[4])
 }
 
 /*
-** Check column c against its top/bottom clues, now stored together as
-** viewTB[c] = {top, bottom}.
-** Extracts column into a temporary array, then checks both directions.
-*/
-static int	check_col_views(int grid[4][4], int c, int viewTB[4][2])
+ ** Check column c against its top/bottom clues, now stored together as
+ ** view_tb[c] = {top, bottom}.
+ ** Extracts column into a temporary array, then checks both directions.
+ */
+static int	check_col_views(int grid[4][4], int c, int view_tb[4][2])
 {
 	int	col[4];
 	int	rev[4];
@@ -108,17 +120,17 @@ static int	check_col_views(int grid[4][4], int c, int viewTB[4][2])
 		rev[i] = grid[3 - i][c];
 		i++;
 	}
-	if (count_visible(col) != viewTB[c][0])
+	if (count_visible(col) != view_tb[c][0])
 		return (0);
-	if (count_visible(rev) != viewTB[c][1])
+	if (count_visible(rev) != view_tb[c][1])
 		return (0);
 	return (1);
 }
 
 /*
-** Return 1 if val does not appear in column c for rows 0..(limit-1).
-** Used to enforce the Latin-square constraint before committing a row.
-*/
+ ** Return 1 if val does not appear in column c for rows 0..(limit-1).
+ ** Used to enforce the Latin-square constraint before committing a row.
+ */
 static int	col_has_no_repeat(int grid[4][4], int c, int val, int limit)
 {
 	int	r;
@@ -168,13 +180,13 @@ static void	print_grid(int grid[4][4])
 }
 
 /*
-** Recursive solver: places one row at a time (r = 0..3).
-** Looks up candidate patterns by key = viewLR[r][0] (left), viewLR[r][1]
-** (right). Guards: no column repeat, then full column view check at r==4.
-** Returns 1 if a valid complete grid was found, 0 otherwise.
-*/
-static int	solve_row(int grid[4][4], int viewLR[4][2], int viewTB[4][2],
-				int r)
+ ** Recursive solver: places one row at a time (r = 0..3).
+ ** Looks up candidate patterns by key = view_lr[r][0] (left), view_lr[r][1]
+ ** (right). Guards: no column repeat, then full column view check at r==4.
+ ** Returns 1 if a valid complete grid was found, 0 otherwise.
+ */
+static int	solve_row(int grid[4][4], int view_lr[4][2], int view_tb[4][2],
+		int r)
 {
 	int	p;
 	int	c;
@@ -185,7 +197,7 @@ static int	solve_row(int grid[4][4], int viewLR[4][2], int viewTB[4][2],
 		c = 0;
 		while (c < 4)
 		{
-			if (!check_col_views(grid, c, viewTB))
+			if (!check_col_views(grid, c, view_tb))
 				return (0);
 			c++;
 		}
@@ -194,8 +206,8 @@ static int	solve_row(int grid[4][4], int viewLR[4][2], int viewTB[4][2],
 	p = 0;
 	while (p < PATTERN_COUNT)
 	{
-		if (g_patterns[p][0] != viewLR[r][0]
-			|| g_patterns[p][1] != viewLR[r][1])
+		if (g_patterns[p][0] != view_lr[r][0]
+				|| g_patterns[p][1] != view_lr[r][1])
 		{
 			p++;
 			continue ;
@@ -222,7 +234,7 @@ static int	solve_row(int grid[4][4], int viewLR[4][2], int viewTB[4][2],
 			grid[r][c] = g_patterns[p][c + 2];
 			c++;
 		}
-		if (solve_row(grid, viewLR, viewTB, r + 1))
+		if (solve_row(grid, view_lr, view_tb, r + 1))
 			return (1);
 		p++;
 	}
@@ -230,16 +242,16 @@ static int	solve_row(int grid[4][4], int viewLR[4][2], int viewTB[4][2],
 }
 
 /*
-** Parse argv[1]: exactly 16 digits '1'..'4' separated by single spaces.
-** Validates char-by-char into a local views[16] (subject order), then
-** redistributes into the pairing arrays:
-**   [0..3]  col1top..col4top     -> viewTB[c][0]
-**   [4..7]  col1bottom..col4bottom-> viewTB[c][1]
-**   [8..11] row1left..row4left   -> viewLR[r][0]
-**   [12..15] row1right..row4right -> viewLR[r][1]
-** Returns 0 on success, -1 on any format error.
-*/
-static int	parse_views(char *arg, int viewLR[4][2], int viewTB[4][2])
+ ** Parse argv[1]: exactly 16 digits '1'..'4' separated by single spaces.
+ ** Validates char-by-char into a local views[16] (subject order), then
+ ** redistributes into the pairing arrays:
+ **   [0..3]  col1top..col4top     -> view_tb[c][0]
+ **   [4..7]  col1bottom..col4bottom-> view_tb[c][1]
+ **   [8..11] row1left..row4left   -> view_lr[r][0]
+ **   [12..15] row1right..row4right -> view_lr[r][1]
+ ** Returns 0 on success, -1 on any format error.
+ */
+static int	parse_views(char *arg, int view_lr[4][2], int view_tb[4][2])
 {
 	int	views[16];
 	int	i;
@@ -266,10 +278,10 @@ static int	parse_views(char *arg, int viewLR[4][2], int viewTB[4][2])
 	i = 0;
 	while (i < 4)
 	{
-		viewTB[i][0] = views[i];
-		viewTB[i][1] = views[4 + i];
-		viewLR[i][0] = views[8 + i];
-		viewLR[i][1] = views[12 + i];
+		view_tb[i][0] = views[i];
+		view_tb[i][1] = views[4 + i];
+		view_lr[i][0] = views[8 + i];
+		view_lr[i][1] = views[12 + i];
 		i++;
 	}
 	return (0);
@@ -278,15 +290,15 @@ static int	parse_views(char *arg, int viewLR[4][2], int viewTB[4][2])
 int	main(int argc, char **argv)
 {
 	int	grid[4][4];
-	int	viewLR[4][2];
-	int	viewTB[4][2];
+	int	view_lr[4][2];
+	int	view_tb[4][2];
 
-	if (argc != 2 || parse_views(argv[1], viewLR, viewTB) == -1)
+	if (argc != 2 || parse_views(argv[1], view_lr, view_tb) == -1)
 	{
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	if (!solve_row(grid, viewLR, viewTB, 0))
+	if (!solve_row(grid, view_lr, view_tb, 0))
 	{
 		write(1, "Error\n", 6);
 		return (1);
