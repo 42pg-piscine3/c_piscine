@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rush01.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
+/*   rush01.c                                             :::      ::::::::   */
+/*   By: joshtan <joshtan@student.42.fr>                :+:      :+:    :+:   */
+/*   By: patitan <patitan@student.42.fr>              +:+ +:+         +:+     */
+/*   By: dming-ha <dming-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 15:08:08 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/14 15:54:45 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/14 07:01:35 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -35,21 +35,21 @@ void	drawrow_first(int col)
 	col_count = 1;
 	while (col_count <= col)
 	{
-		if (col_count == 1)
+		if (col_count == 1) //Start with 1 for natural language
 		{
 			ft_putchar('/');
 		}
-		else if (col_count < col)
+		else if (col_count < col) //other columns than start or end
 		{
 			ft_putchar('*');
 		}
-		else
+		else // end of column
 		{
 			ft_putchar('\\');
 		}
 		col_count++;
 	}
-	ft_putchar('\n');
+	ft_putchar('\n'); //put newline at the end column
 }
 
 /*
@@ -74,21 +74,21 @@ void	drawrow_middles(int col)
 	col_count = 1;
 	while (col_count <= col)
 	{
-		if (col_count == 1)
+		if (col_count == 1) //Start with 1 for natural language
 		{
 			ft_putchar('*');
 		}
-		else if (col_count < col)
+		else if (col_count < col) //other columns than start or end
 		{
 			ft_putchar(' ');
 		}
-		else
+		else // end of column
 		{
 			ft_putchar('*');
 		}
 		col_count++;
 	}
-	ft_putchar('\n');
+	ft_putchar('\n'); //put newline at the end column
 }
 
 /*
@@ -146,18 +146,12 @@ void	drawrow_last(int col)
  *	If row_count is at the beginnin of the loop, the decisions will be wrong.
  *
  */
-//			x = column, y = row
-void	rush(int x, int y)
+ 
+void	translate(int x, int y)
 {
 	int	row_count;
 
 	row_count = 1;
-	printf("rush(%d, %d):\n", x, y);
-	if ((0 > x) || (0 > y))
-	{
-		x = 0;
-		y = 0;
-	}
 	while (row_count <= y)
 	{
 		if (row_count == 1)
@@ -173,5 +167,19 @@ void	rush(int x, int y)
 			drawrow_last(x);
 		}
 		row_count = row_count + 1;
+	}
+}
+
+//	x = column, y = row
+void	rush(int x, int y) 	// checking function to prevent negative value in input
+{
+	printf("rush(%d, %d):\n", x, y);
+	if (x >= 0 && y >= 0)
+	{
+		translate(x, y);
+	}
+	else if (x < 0 || y < 0)
+	{
+		printf("Please check again ! Both value cannot be negative\n");
 	}
 }
