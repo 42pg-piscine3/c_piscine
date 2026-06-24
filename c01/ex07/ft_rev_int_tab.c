@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 10:53:09 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/24 21:46:02 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/24 22:26:00 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -31,9 +31,9 @@
  */
 void	ft_rev_int_tab(int *tab, int size)
 {
-	int element;
-	int rev_element;
-	int tmp;
+	int	element;
+	int	rev_element;
+	int	tmp;
 
 	element = 0;
 	rev_element = size - 1;
@@ -49,18 +49,29 @@ void	ft_rev_int_tab(int *tab, int size)
 
 /*
  * Uncomment for test
+ * Note about int *tab to pass norminette rather than tab[] = {1,2,3...}
+ * This will fail -> sizeof(tab)/sizeof(tab[0]));
+ *
+ * When you use int *vals, the variable vals is a pointer, not an array.
+ * In C, sizeof(vals) only returns the size of the pointer (usually 8 bytes
+ * on 64-bit systems),
+ * completely losing track of how many elements are in the array.
  */
-int main (int argc, char *argv[])
+int	main(void)
 {
-	int	tab[] = {1,2,3,4,5,6,7,8,9,0,123};
-	int cnt = 0;
+	int		*tab;
+	size_t	size_tab;
+	int		cnt;
 
-	printf("sizeof tab= %ld \n", (sizeof(tab)/sizeof(tab[0])));
-	ft_rev_int_tab(tab, sizeof(tab)/sizeof(tab[0]));
-
-	while (cnt < (sizeof(tab)/sizeof(tab[0])))
+	tab = (int []){1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 123};
+	size_tab = \
+sizeof ((int []){1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 123}) / sizeof (int);
+	printf ("sizeof tab= %ld \n", size_tab);
+	ft_rev_int_tab (tab, (int)size_tab);
+	while (cnt < (int)size_tab)
 	{
 		printf("tab[%d]: %d\n", cnt, tab[cnt]);
 		cnt++;
 	}
-}/* */
+}
+/* */
