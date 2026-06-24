@@ -6,11 +6,12 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 10:53:09 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/24 22:26:00 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/24 22:28:38 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
 #include <stdio.h>
-
+*/
 /* The general idea is to swap front and back.
  * technically:
  * - front starts with 0 and increments
@@ -56,16 +57,15 @@ void	ft_rev_int_tab(int *tab, int size)
  * In C, sizeof(vals) only returns the size of the pointer (usually 8 bytes
  * on 64-bit systems),
  * completely losing track of how many elements are in the array.
- */
+ *
 int	main(void)
 {
 	int		*tab;
 	size_t	size_tab;
 	int		cnt;
 
-	tab = (int []){1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 123};
-	size_tab = \
-sizeof ((int []){1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 123}) / sizeof (int);
+	tab = (int []){1, 2, 3, 4, 5, 6, 7, 8, 9, 123};
+	size_tab = sizeof ((int []){1, 2, 3, 4, 5, 6, 7, 8, 9, 123}) / sizeof (int);
 	printf ("sizeof tab= %ld \n", size_tab);
 	ft_rev_int_tab (tab, (int)size_tab);
 	while (cnt < (int)size_tab)
@@ -74,4 +74,4 @@ sizeof ((int []){1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 123}) / sizeof (int);
 		cnt++;
 	}
 }
-/* */
+*/
