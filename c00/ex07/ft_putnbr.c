@@ -1,0 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/18 05:19:25 by joshtan           #+#    #+#             */
+/*   Updated: 2026/06/19 10:32:17 by joshtan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include <unistd.h>
+
+#define TEST 0//Set to 1 for testing with main
+
+void	ft_putnbr(int nb);
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	char	charint;
+
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+	}
+	nb = nb % 10;
+	charint = '0' + nb;
+	ft_putchar(charint);
+}
+
+#if TEST == 1
+/*
+ * Does not handle negative symbol properly. 45-48= -3
+ * So you will see "-3""XXXX"
+ * e.g. ./a.out -42	-> "-342"
+ */
+int	main(int argc, char *argv[])
+{
+	int	num;
+
+	if (argc < 2)
+	{
+		ft_putnbr(42);
+		ft_putchar('\n');
+		ft_putnbr(421);
+		ft_putchar('\n');
+	}
+	else
+	{
+		while (*argv[1] != '\0')
+		{
+			num = *argv[1] - '0';
+			ft_putnbr(num);
+			argv[1] = argv[1] + 1;
+		}
+		ft_putchar('\n');
+	}
+}
+#endif // End Test

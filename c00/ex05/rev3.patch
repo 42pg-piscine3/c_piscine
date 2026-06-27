@@ -1,0 +1,30 @@
+9c9
+< /*   Updated: 2026/06/18 03:43:04 by joshtan          ###   ########.fr       */
+---
+> /*   Updated: 2026/06/18 04:02:02 by joshtan          ###   ########.fr       */
+52,53d51
+< 	digit2 = digit1 + 1;
+< 	digit3 = digit2 + 1;
+56c54
+< 		num_to_char(digit1);
+---
+> 		digit2 = digit1 + 1;
+59c57,58
+< 			if(digit2 > (digit1))
+---
+> 			digit3 = digit2 + 1;
+> 			while (digit3 < 10)
+61c60,70
+< 				num_to_char(digit2);
+---
+> 				if (digit2 > digit1)
+> 				{
+> 					num_to_char(digit1);
+> 					num_to_char(digit2);
+> 				}
+> 				if (digit3 > digit2)
+> 				{
+> 					num_to_char(digit3);
+> 					write(1, ", ", 2);
+> 				}
+> 				digit3++;

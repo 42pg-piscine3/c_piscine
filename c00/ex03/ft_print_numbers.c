@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/19 10:43:03 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/19 10:43:37 by joshtan          ###   ########.fr       */
+/*   Created: 2026/06/16 13:35:24 by joshtan           #+#    #+#             */
+/*   Updated: 2026/06/16 13:39:04 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void	ft_putchar(char c);
-
-void	ft_putchar(char c)
+void	ft_print_numbers(void)
 {
-	write(1, &c, 1);
+	write(1, "0123456789", 10);
 }
 
 /*
-int main (void)
+ * Uncomment to test
+ *
+int	main(void)
 {
-	ft_putchar('a');
-
-	return 0;
+	ft_print_numbers();
+	return (0);
 }
 */
