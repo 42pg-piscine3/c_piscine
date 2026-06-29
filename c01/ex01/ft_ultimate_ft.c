@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:15:38 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/29 11:28:57 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/29 12:11:58 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char *argv[])
 		ft_ultimate_ft(&p8test_nbr);
 	else
 	{
+		printf("Taking 1st input param only: = %s\n", argv[1]);
 		if(argv[1][cnt] == '-')
 		{
 			printf("-ve input not supported\n");
