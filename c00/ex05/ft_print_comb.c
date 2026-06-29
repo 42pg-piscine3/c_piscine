@@ -6,11 +6,10 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:39:57 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/18 04:30:02 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/19 10:40:55 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <stdio.h>
 
 void	ft_print_comb(void);
 
@@ -28,15 +27,13 @@ void	num_to_char(int num)
 		ft_putchar('-');
 		num = -num;
 	}
-	if (num >= 10)
+	else if (num >= 10)
 	{
-		printf("1st group recursion call: %d\n", num);
 		num_to_char(num / 10);
-		printf("2nd group recursion call: %d\n", num);
-		num_to_char(num % 10);
 	}
 	else
 	{
+		num = num % 10;
 		charint = '0' + num;
 		ft_putchar(charint);
 	}
@@ -78,7 +75,9 @@ void	ft_print_comb(void)
 	}
 }
 
+/*
 int	main(void)
 {
 	ft_print_comb();
 }
+*/
