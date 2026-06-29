@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 01:34:34 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/25 15:42:18 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/29 15:22:12 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	ft_div_mod(int a, int b, int *div, int *mod)
 		*mod = a % b;
 	}
 }
-
-
 
 /*
  * Uncomment to Test

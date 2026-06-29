@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 03:28:20 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/29 10:32:31 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/29 15:26:48 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	ft_strlen(char *str)
@@ -26,7 +26,7 @@ int	ft_strlen(char *str)
 
 /*
  * Uncomment for test
- **/
+ *
 #include <stdio.h>
 
 int main(void)
@@ -49,4 +49,4 @@ int main(void)
 	len = ft_strlen(word);
     printf("len is %d\n", len);
 }
-/**/
+*/
