@@ -6,11 +6,11 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 21:14:10 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/30 02:01:41 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/30 02:13:50 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Implement char *my_strcpy(char *dest, char *src);
+/* Implement char *ft_strcpy(char *dest, char *src);
  * Returns pointer to dest string.
  * Copying includes '\0'
  * Function stop copying after null from src is written.
@@ -29,7 +29,7 @@
  *
  * "safer" way is directly memcpy, but the exercise disallows other functions.
  */
-char	*my_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, char *src)
 {
 	while (*src)
 	{
@@ -57,12 +57,12 @@ int	main(int argc, char *argv[])
 	idx = 0;
 	if (argc != 3)
 	{
-		my_strcpy(s, "abracadabra");
+		ft_strcpy(s, "abracadabra");
 		printf("%s\n", s);
 		while (idx < strlen(s))
 		{
 			if (s[idx] == 'a')
-				my_strcpy(s + idx, s + idx + 1);
+				ft_strcpy(s + idx, s + idx + 1);
 			else
 				idx++;
 		}
