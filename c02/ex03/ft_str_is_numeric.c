@@ -6,10 +6,11 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 05:23:22 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/30 07:30:16 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/30 10:15:41 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 
 int	ft_str_is_numeric(char *str)
 {
@@ -29,17 +30,15 @@ int	ft_str_is_numeric(char *str)
 
 /*
  * Uncomment to test
- **/
-#include <stdio.h>
-
+ **
 int	main(void)
 {
-	printf("Test 1 (Empty)   - Expect: 1, Is %d\n", ft_str_is_numeric(""));
-    printf("Test 2 (Digits)  - Expect: 1, Is %d\n", ft_str_is_numeric("0123456789"));
-    printf("Test 3 (Alpha)   - Expect: 0, Is %d\n", ft_str_is_numeric("123a45"));
-    printf("Test 4 (Space)   - Expect: 0, Is %d\n", ft_str_is_numeric("123 456"));
-    printf("Test 5 (Special) - Expect: 0, Is %d\n", ft_str_is_numeric("42-24"));
-
-    return (0);
+	printf("T1 (Empty)  - Expect: 1, Is %d\n",
+		ft_str_is_numeric(""));
+	printf("T2 (Digits) - Expect: 1, Is %d\n", ft_str_is_numeric("0123456789"));
+	printf("T3 (Alpha)  - Expect: 0, Is %d\n", ft_str_is_numeric("123a45"));
+	printf("T4 (Space)   - Expect: 0, Is %d\n", ft_str_is_numeric("123 456"));
+	printf("T5 (Special) - Expect: 0, Is %d\n", ft_str_is_numeric("42-24"));
+	return (0);
 }
-/***/
+***/
