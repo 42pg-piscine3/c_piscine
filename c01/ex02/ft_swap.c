@@ -6,11 +6,11 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 21:39:17 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/23 01:32:52 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/06/30 15:07:33 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//# include <unistd.h>
+//#include <unistd.h>
 
 /*
  * Swapping without extra variable using XOR
@@ -49,16 +49,21 @@
  *
  *    a is now b
  *    b is now a [equation 3]
+ *
+ *    Guard condition: ensure a and b not from the same address.
+ *    Tip: Use temporary variables is safer.
  */
 
 void	ft_swap(int *a, int *b)
 {
+	if (a == b)
+		return ;
 	*a = *a ^ *b;
 	*b = *a ^ *b;
 	*a = *a ^ *b;
 }
 
-/*
+/**
 void	ft_putnbr(int n)
 {
 	char	c;
@@ -90,5 +95,14 @@ int	main(void)
 	write(1, "\n", 1);
 	ft_putnbr(beta);
 	write(1, "\n", 1);
+	alpha = 987;
+	ft_putnbr(alpha);
+	write(1, "\n", 1);
+	ft_swap(&alpha, &alpha);
+	ft_putnbr(alpha);
+	write(1, "\n", 1);
+	ft_putnbr(beta);
+	write(1, "\n", 1);
+
 }
-*/
+***/
