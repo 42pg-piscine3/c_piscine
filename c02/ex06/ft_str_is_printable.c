@@ -6,30 +6,31 @@
 /*   By: joshtan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 14:19:33 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/30 14:46:27 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/07/01 12:32:09 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> //For test print.
+//#include <stdio.h> //For test print.
 
 int	ft_str_is_printable(char *str)
 {
-	int flag;
+	int	flag;
 
 	if (!str)
 		return (1);
 	flag = 1;
-	while(*str)
+	while (*str)
 	{
-		if(!(32 <= *str && *str <= 126))
+		if (!(32 <= *str && *str <= 126))
 			flag = 0;
-
 		str++;
 	}
 	return (flag);
 }
 
-
+/*
+ *
+ **
 int	main (void)
 {
 	printf("Test 1 (Empty)          - Expected: 1, Got: %d\n",
@@ -52,3 +53,4 @@ int	main (void)
 				"[\\]^_`"
 				"abcdefghijklmnopqrstuvwxyz{|}~"));
 }
+***/

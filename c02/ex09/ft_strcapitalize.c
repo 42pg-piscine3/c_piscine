@@ -6,7 +6,7 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 22:31:20 by joshtan           #+#    #+#             */
-/*   Updated: 2026/07/01 01:35:19 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/07/01 12:30:38 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ char	*ft_strcapitalize(char *str)
 
 /*
  * Uncomment to test
- **/
+ **
 #include <stdio.h>
 #include <string.h>
 
@@ -267,4 +267,4 @@ int main(void)
 
 	return 0;
 }
-/***/
+***/
