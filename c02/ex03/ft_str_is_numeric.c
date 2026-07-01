@@ -6,11 +6,11 @@
 /*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 05:23:22 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/30 10:15:41 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/07/01 13:58:29 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 
 int	ft_str_is_numeric(char *str)
 {

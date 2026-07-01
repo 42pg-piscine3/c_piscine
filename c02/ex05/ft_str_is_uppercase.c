@@ -6,7 +6,7 @@
 /*   By: joshtan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 14:07:02 by joshtan           #+#    #+#             */
-/*   Updated: 2026/06/30 14:16:33 by joshtan          ###   ########.fr       */
+/*   Updated: 2026/07/01 14:00:46 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_str_is_uppercase(char *str)
 	int	flag;
 
 	flag = 1;
-	if (!*str)
+	if (!str)
 		return (flag);
 	while (*str)
 	{
