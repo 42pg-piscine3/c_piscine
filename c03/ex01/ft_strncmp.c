@@ -31,10 +31,8 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	len = 0;
 	if (0 == n)
 		return (0);
-	while (*s1 && (*s1 == *s2))
+	while (*s1 && (*s1 == *s2) && ((len >= n-1))
 	{
-		if (len >= n-1)
-			break;
 		s1++;
 		s2++;
 		len++;

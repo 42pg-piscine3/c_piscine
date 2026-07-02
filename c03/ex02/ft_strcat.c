@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joshtan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/02 00:29:26 by joshtan           #+#    #+#             */
-/*   Updated: 2026/07/02 01:13:11 by joshtan          ###   ########.fr       */
+/*   Created: 2026/07/02 09:05:48 by joshtan           #+#    #+#             */
+/*   Updated: 2026/07/03 05:52:55 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,18 @@ unsigned int	ft_strlen(char *str)
  */
 char *ft_strcat(char *dest, char *src)
 {
-	unsigned int	len;
-	unsigned int	cnt;
+	unsigned int	dlen;
+	unsigned int	i;
 
-	len = ft_strlen(dest);
-	cnt = 0;
-	while (src[cnt] != '\0')
+	dlen = ft_strlen(dest);
+	i = 0;
+	while (*src)
 	{
-		dest[len + cnt] = src[cnt];
-		cnt++;
+		*(dest + dlen + i) = *src;
+		src++;
+		i++;
 	}
-	dest[len + cnt] = '\0';
+	*(dest + dlen + i) = '\0';
+
 	return (dest);
 }

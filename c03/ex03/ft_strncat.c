@@ -2,27 +2,23 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: joshtan <joshtan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joshtan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/02 01:04:43 by joshtan           #+#    #+#             */
-/*   Updated: 2026/07/02 01:29:13 by joshtan          ###   ########.fr       */
+/*   Created: 2026/07/02 09:21:40 by joshtan           #+#    #+#             */
+/*   Updated: 2026/07/02 09:34:51 by joshtan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(char *str)
+unsigned int    ft_strlen(char *str)
 {
-	unsigned int len;
-
-	if (!str)
-		return (0);
-	len = 0;
-	while (*str)
-	{
-		str++;
-		len++;
-	}
-	return (len);
+    unsigned int    len;
+    len = 0;
+    while (*str)
+    {
+        str++;
+        len++;
+    }
+    return (len);
 }
 
 /*
@@ -40,17 +36,18 @@ unsigned int	ft_strlen(char *str)
  */
 char *ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	unsigned int	len;
-	unsigned int	cnt;
+    unsigned int    dlen;
+    unsigned int    i;
 
-	len = ft_strlen(dest);
-	cnt = 0;
-	while ((cnt < nb) && (src[cnt] != '\0'))
-	{
-		dest[len + cnt] = src[cnt];
-		cnt++;
-	}
-	dest[len + cnt] = '\0';
+    dlen = ft_strlen(dest);
+    i = 0;
+    while (*src && i < nb)
+    {
+        *(dest + dlen + i) = *src;
+        src++;
+        i++;
+    }
+    *(dest + dlen + i) = '\0';
 
-	return (dest);
+    return (dest);
 }
